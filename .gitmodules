@@ -1,4 +1,1 @@
-[submodule "backend"]
-    path = backend
-    url = git@github.com:Spenkau/task-manager.git
-	ignore = dirty
+r

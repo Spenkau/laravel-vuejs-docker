@@ -1,0 +1,23 @@
+@import "../general";
+
+
+.category-child-list{
+    ul{
+        padding-left: 10px;
+    }
+    li{
+        margin-bottom: 5px;
+    }
+}
+
+
+
+.sidebar_hide {
+    left: -5000px;
+}
+
+.sidebar_active {
+    left: 0;
+}
+
+

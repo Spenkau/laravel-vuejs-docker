@@ -5,28 +5,43 @@ services:
     image: mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_ROOT_PASSWORD: rfxrf2004yjhv2
     ports:
       - "3307:3306"
-  backend:
+    networks:
+      - test-network
+  laravel-backend:
+    container_name: "laravel-backend"
     build:
       context: ./backend
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
-  frontend:
+    networks:
+      - test-network
+  vuejs-frontend:
+    container_name: "vuejs-frontend"
     build:
       context: ./frontend
       dockerfile: Dockerfile
     restart: always
     ports:
       - "8080:8080"
-  nginx:
+    networks:
+      - test-network
+  nginx-test:
+    container_name: "nginx-test"
     build:
       context: ./nginx
       dockerfile: Dockerfile
     ports:
       - "80:80"
     depends_on:
-      - backend
-      - frontend
+      - laravel-backend
+      - vuejs-frontend
+    networks:
+      - test-network
+
+networks:
+  test-network:
+    driver: bridge
